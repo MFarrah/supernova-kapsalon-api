@@ -1,30 +1,32 @@
 package nl.mfarr.supernovakapsalonapi.entities;
-
-import java.time.LocalDate;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+import java.util.Map;
 import java.util.Set;
 
-public class CustomerEntity {
+public class EmployeeEntity {
+
     private Long id;
     private String name;
     private String lastName;
-    private LocalDate dateOfBirth;
     private String email;
     private String phoneNumber;
-    private boolean gender;
+    private Set<SkillEntity> skills;
     private Set<AppointmentEntity> appointments;
+    private Map<DayOfWeek, Set<LocalTime>> availability;
 
-    public CustomerEntity(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, boolean gender, Set<AppointmentEntity> appointments) {
+    public EmployeeEntity(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Map<DayOfWeek, Set<LocalTime>> availability) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.gender = gender;
+        this.skills = skills;
         this.appointments = appointments;
+        this.availability = availability;
     }
 
-    public CustomerEntity() {
+    public EmployeeEntity() {
     }
 
     public Long getId() {
@@ -47,14 +49,6 @@ public class CustomerEntity {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -71,12 +65,12 @@ public class CustomerEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isGender() {
-        return gender;
+    public Set<SkillEntity> getSkills() {
+        return skills;
     }
 
-    public void setGender(boolean gender) {
-        this.gender = gender;
+    public void setSkills(Set<SkillEntity> skills) {
+        this.skills = skills;
     }
 
     public Set<AppointmentEntity> getAppointments() {
@@ -85,5 +79,13 @@ public class CustomerEntity {
 
     public void setAppointments(Set<AppointmentEntity> appointments) {
         this.appointments = appointments;
+    }
+
+    public Map<DayOfWeek, Set<LocalTime>> getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(Map<DayOfWeek, Set<LocalTime>> availability) {
+        this.availability = availability;
     }
 }
