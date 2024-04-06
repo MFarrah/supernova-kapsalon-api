@@ -1,6 +1,8 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
+import nl.mfarr.supernovakapsalonapi.entities.AppointmentEntity;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class CustomerDto {
     private Long id;
@@ -10,8 +12,9 @@ public class CustomerDto {
     private String email;
     private String phoneNumber;
     private boolean gender;
+    private Set<AppointmentEntity> appointments;
 
-    public CustomerDto(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, boolean gender) {
+    public CustomerDto(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, boolean gender, Set<AppointmentEntity> appointments) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -19,6 +22,7 @@ public class CustomerDto {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.gender = gender;
+        this.appointments = appointments;
     }
 
     public CustomerDto() {
@@ -74,5 +78,13 @@ public class CustomerDto {
 
     public void setGender(boolean gender) {
         this.gender = gender;
+    }
+
+    public Set<AppointmentEntity> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<AppointmentEntity> appointments) {
+        this.appointments = appointments;
     }
 }

@@ -1,5 +1,4 @@
 package nl.mfarr.supernovakapsalonapi.entities;
-
 import java.time.LocalDate;
 import java.util.Set;
 
