@@ -1,8 +1,12 @@
 package nl.mfarr.supernovakapsalonapi.entities;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
+@Entity
 public class CustomerEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String lastName;
@@ -10,6 +14,7 @@ public class CustomerEntity {
     private String email;
     private String phoneNumber;
     private boolean gender;
+    @OneToMany(mappedBy = "customer")
     private Set<AppointmentEntity> appointments;
 
     public CustomerEntity(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, boolean gender, Set<AppointmentEntity> appointments) {

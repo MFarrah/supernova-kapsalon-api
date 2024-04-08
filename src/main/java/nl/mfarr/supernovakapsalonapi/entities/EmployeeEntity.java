@@ -1,21 +1,29 @@
 package nl.mfarr.supernovakapsalonapi.entities;
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.Map;
+import jakarta.persistence.*;
 import java.util.Set;
 
+@Entity
 public class EmployeeEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String lastName;
     private String email;
     private String phoneNumber;
-    private Set<SkillEntity> skills;
-    private Set<AppointmentEntity> appointments;
-    private Map<DayOfWeek, Set<LocalTime>> availability;
 
-    public EmployeeEntity(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Map<DayOfWeek, Set<LocalTime>> availability) {
+    @ManyToMany(mappedBy = "employees")
+    private Set<SkillEntity> skills;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<AppointmentEntity> appointments;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<AvailabilitySlotEntity> availabilitySlots;
+
+    public EmployeeEntity(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -23,7 +31,7 @@ public class EmployeeEntity {
         this.phoneNumber = phoneNumber;
         this.skills = skills;
         this.appointments = appointments;
-        this.availability = availability;
+        this.availabilitySlots = availabilitySlots;
     }
 
     public EmployeeEntity() {
@@ -81,11 +89,11 @@ public class EmployeeEntity {
         this.appointments = appointments;
     }
 
-    public Map<DayOfWeek, Set<LocalTime>> getAvailability() {
-        return availability;
+    public Set<AvailabilitySlotEntity> getAvailabilitySlots() {
+        return availabilitySlots;
     }
 
-    public void setAvailability(Map<DayOfWeek, Set<LocalTime>> availability) {
-        this.availability = availability;
+    public void setAvailabilitySlots(Set<AvailabilitySlotEntity> availabilitySlots) {
+        this.availabilitySlots = availabilitySlots;
     }
 }

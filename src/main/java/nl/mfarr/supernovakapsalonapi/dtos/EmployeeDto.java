@@ -1,11 +1,10 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
 import nl.mfarr.supernovakapsalonapi.entities.AppointmentEntity;
+import nl.mfarr.supernovakapsalonapi.entities.AvailabilitySlotEntity;
 import nl.mfarr.supernovakapsalonapi.entities.SkillEntity;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.Map;
 import java.util.Set;
+
 
 public class EmployeeDto {
 
@@ -16,9 +15,9 @@ public class EmployeeDto {
     private String phoneNumber;
     private Set<SkillEntity> skills;
     private Set<AppointmentEntity> appointments;
-    private Map<DayOfWeek, Set<LocalTime>> availability;
+    private Set<AvailabilitySlotEntity> availabilitySlots;
 
-    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Map<DayOfWeek, Set<LocalTime>> availability) {
+    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -26,7 +25,7 @@ public class EmployeeDto {
         this.phoneNumber = phoneNumber;
         this.skills = skills;
         this.appointments = appointments;
-        this.availability = availability;
+        this.availabilitySlots = availabilitySlots;
     }
 
     public EmployeeDto() {
@@ -84,11 +83,11 @@ public class EmployeeDto {
         this.appointments = appointments;
     }
 
-    public Map<DayOfWeek, Set<LocalTime>> getAvailability() {
-        return availability;
+    public Set<AvailabilitySlotEntity> getAvailabilitySlots() {
+        return availabilitySlots;
     }
 
-    public void setAvailability(Map<DayOfWeek, Set<LocalTime>> availability) {
-        this.availability = availability;
+    public void setAvailabilitySlots(Set<AvailabilitySlotEntity> availabilitySlots) {
+        this.availabilitySlots = availabilitySlots;
     }
 }

@@ -1,13 +1,20 @@
 package nl.mfarr.supernovakapsalonapi.entities;
-import java.util.Set;
+import jakarta.persistence.*;
 
+import java.util.Set;
+@Entity
 public class SkillEntity {
 
-
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String name;
         private String description;
         private double price;
+        @ManyToMany
+        @JoinTable(name = "employee_skill",
+                joinColumns = @JoinColumn(name = "skill_id"),
+                inverseJoinColumns = @JoinColumn(name = "employee_id"))
         private Set<EmployeeEntity> employees;
 
         public SkillEntity(Long id, String name, String description, double price, Set<EmployeeEntity> employees) {

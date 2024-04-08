@@ -1,7 +1,5 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
-
 import nl.mfarr.supernovakapsalonapi.entities.EmployeeEntity;
-
 import java.util.Set;
 
 public class SkillDto {
