@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/skills")
 public class SkillController {
@@ -21,8 +23,8 @@ public class SkillController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SkillDto> getSkillById(@PathVariable Long id) {
-        SkillDto skillDto = skillService.getSkillById(id);
+    public ResponseEntity<Optional<SkillDto>> getSkillById(@PathVariable Long id) {
+        Optional<SkillDto> skillDto = skillService.getSkillById(id);
         return ResponseEntity.ok(skillDto);
     }
 

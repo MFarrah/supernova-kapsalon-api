@@ -35,6 +35,8 @@ public class EmployeeDto {
         return id;
     }
 
+    public void setId(Long id) {}
+
     public String getName() {
         return name;
     }
@@ -90,4 +92,5 @@ public class EmployeeDto {
     public void setAvailabilitySlots(Set<AvailabilitySlotEntity> availabilitySlots) {
         this.availabilitySlots = availabilitySlots;
     }
-}
+
+    }

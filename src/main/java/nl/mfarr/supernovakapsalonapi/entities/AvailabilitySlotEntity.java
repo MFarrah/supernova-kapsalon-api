@@ -35,6 +35,8 @@ public class AvailabilitySlotEntity {
         return id;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public EmployeeEntity getEmployee() {
         return employee;
     }

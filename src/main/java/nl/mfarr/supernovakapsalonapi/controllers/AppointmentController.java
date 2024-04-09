@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/appointments")
 public class AppointmentController {
@@ -21,8 +23,8 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AppointmentDto> getAppointmentById(@PathVariable Long id) {
-        AppointmentDto appointmentDto = appointmentService.getAppointmentById(id);
+    public ResponseEntity<Optional<AppointmentDto>> getAppointmentById(@PathVariable Long id) {
+        Optional<AppointmentDto> appointmentDto = appointmentService.getAppointmentById(id);
         return ResponseEntity.ok(appointmentDto);
     }
 

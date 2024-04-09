@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -21,8 +23,8 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable Long id) {
-        CustomerDto customerDto = customerService.getCustomerById(id);
+    public ResponseEntity<Optional<CustomerDto>> getCustomerById(@PathVariable Long id) {
+        Optional<CustomerDto> customerDto = customerService.getCustomerById(id);
         return ResponseEntity.ok(customerDto);
     }
 

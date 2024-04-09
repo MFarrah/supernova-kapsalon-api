@@ -47,6 +47,8 @@ public AppointmentEntity(Long id, CustomerEntity customer, EmployeeEntity employ
         return id;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public CustomerEntity getCustomer() {
         return customer;
     }

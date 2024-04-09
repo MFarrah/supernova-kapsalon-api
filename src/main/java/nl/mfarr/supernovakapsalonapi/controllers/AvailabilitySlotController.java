@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/availabilityslots")
 public class AvailabilitySlotController {
@@ -21,8 +23,8 @@ public class AvailabilitySlotController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AvailabilitySlotDto> getAvailabilitySlotById(@PathVariable Long id) {
-        AvailabilitySlotDto availabilitySlotDto = availabilitySlotService.getAvailabilitySlotById(id);
+    public ResponseEntity<Optional<AvailabilitySlotDto>> getAvailabilitySlotById(@PathVariable Long id) {
+        Optional<AvailabilitySlotDto> availabilitySlotDto = availabilitySlotService.getAvailabilitySlotById(id);
         return ResponseEntity.ok(availabilitySlotDto);
     }
 
