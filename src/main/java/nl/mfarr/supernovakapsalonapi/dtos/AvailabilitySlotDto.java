@@ -14,6 +14,8 @@ public class AvailabilitySlotDto {
     private LocalTime startTime;
 
     private LocalTime endTime;
+    
+    
 
     public AvailabilitySlotDto(Long id, EmployeeDto employee, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.id = id;
@@ -60,5 +62,8 @@ public class AvailabilitySlotDto {
 
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
+    }
+
+    public void setId(Long id) {
     }
 }

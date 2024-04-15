@@ -13,8 +13,12 @@ import java.util.Optional;
 @RequestMapping("/skills")
 public class SkillController {
 
-    @Autowired
-    private SkillService skillService;
+
+    private final SkillService skillService;
+
+    public SkillController(SkillService skillService) {
+        this.skillService = skillService;
+    }
 
     @PostMapping
     public ResponseEntity<SkillDto> createSkill(@RequestBody SkillDto skillDto) {

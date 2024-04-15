@@ -17,16 +17,7 @@ public class EmployeeDto {
     private Set<AppointmentEntity> appointments;
     private Set<AvailabilitySlotEntity> availabilitySlots;
 
-    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.skills = skills;
-        this.appointments = appointments;
-        this.availabilitySlots = availabilitySlots;
-    }
+
 
     public EmployeeDto() {
     }

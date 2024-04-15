@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class AppointmentService {
 
-    @Autowired
-    private AppointmentRepository appointmentRepository;
+
+    private final AppointmentRepository appointmentRepository;
+
+    public AppointmentService(AppointmentRepository appointmentRepository) {
+        this.appointmentRepository = appointmentRepository;
+    }
 
     public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
         AppointmentEntity appointment = convertToEntity(appointmentDto);

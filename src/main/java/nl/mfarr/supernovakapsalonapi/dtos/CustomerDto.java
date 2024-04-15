@@ -87,4 +87,7 @@ public class CustomerDto {
     public void setAppointments(Set<AppointmentDto> appointments) {
         this.appointments = appointments;
     }
+
+    public void setId(Long id) {
+    }
 }

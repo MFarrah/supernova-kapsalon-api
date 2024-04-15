@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class CustomerService {
 
-    @Autowired
-    private CustomerRepository customerRepository;
+
+    private final CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     public CustomerDto createCustomer(CustomerDto customerDto) {
         CustomerEntity customer = convertToEntity(customerDto);
@@ -44,13 +48,23 @@ public class CustomerService {
 
     private CustomerEntity convertToEntity(CustomerDto customerDto) {
         CustomerEntity customer = new CustomerEntity();
-        // Conversion logic here
+        customer.setId(customerDto.getId());
+        customer.setName(customerDto.getName());
+        customer.setLastName(customerDto.getLastName());
+        customer.setEmail(customerDto.getEmail());
+        customer.setPhoneNumber(customerDto.getPhoneNumber());
+
         return customer;
     }
 
     private CustomerDto convertToDto(CustomerEntity customer) {
         CustomerDto customerDto = new CustomerDto();
-        // Conversion logic here
+        customerDto.setId(customer.getId());
+        customerDto.setName(customer.getName());
+        customerDto.setLastName(customer.getLastName());
+        customerDto.setEmail(customer.getEmail());
+        customerDto.setPhoneNumber(customer.getPhoneNumber());
+
         return customerDto;
     }
 }

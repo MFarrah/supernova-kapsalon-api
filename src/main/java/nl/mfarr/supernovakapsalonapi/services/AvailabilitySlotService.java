@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class AvailabilitySlotService {
 
-    @Autowired
-    private AvailabilitySlotRepository availabilitySlotRepository;
+
+    private final AvailabilitySlotRepository availabilitySlotRepository;
+
+    public AvailabilitySlotService(AvailabilitySlotRepository availabilitySlotRepository) {
+        this.availabilitySlotRepository = availabilitySlotRepository;
+    }
 
     public AvailabilitySlotDto createAvailabilitySlot(AvailabilitySlotDto availabilitySlotDto) {
         AvailabilitySlotEntity availabilitySlot = convertToEntity(availabilitySlotDto);
@@ -44,13 +48,14 @@ public class AvailabilitySlotService {
 
     private AvailabilitySlotEntity convertToEntity(AvailabilitySlotDto availabilitySlotDto) {
         AvailabilitySlotEntity availabilitySlot = new AvailabilitySlotEntity();
-        // Conversion logic here
+
+
         return availabilitySlot;
     }
 
     private AvailabilitySlotDto convertToDto(AvailabilitySlotEntity availabilitySlot) {
         AvailabilitySlotDto availabilitySlotDto = new AvailabilitySlotDto();
-        // Conversion logic here
+
         return availabilitySlotDto;
     }
 }

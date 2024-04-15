@@ -57,4 +57,7 @@ public class SkillDto {
     public void setEmployees(Set<EmployeeEntity> employees) {
         this.employees = employees;
     }
+
+    public void setId(Long id) {
+    }
 }

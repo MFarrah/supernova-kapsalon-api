@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class SkillService {
 
-    @Autowired
-    private SkillRepository skillRepository;
+
+    private final SkillRepository skillRepository;
+
+    public SkillService(SkillRepository skillRepository) {
+        this.skillRepository = skillRepository;
+    }
 
     public SkillDto createSkill(SkillDto skillDto) {
         SkillEntity skill = convertToEntity(skillDto);
@@ -44,13 +48,21 @@ public class SkillService {
 
     private SkillEntity convertToEntity(SkillDto skillDto) {
         SkillEntity skill = new SkillEntity();
-        // Conversion logic here
+        skill.setId(skillDto.getId());
+        skill.setName(skillDto.getName());
+        skill.setDescription(skillDto.getDescription());
+        skill.setPrice(skillDto.getPrice());
+
         return skill;
     }
 
     private SkillDto convertToDto(SkillEntity skill) {
         SkillDto skillDto = new SkillDto();
-        // Conversion logic here
+        skillDto.setId(skill.getId());
+        skillDto.setName(skill.getName());
+        skillDto.setDescription(skill.getDescription());
+        skillDto.setPrice(skill.getPrice());
+
         return skillDto;
     }
 }

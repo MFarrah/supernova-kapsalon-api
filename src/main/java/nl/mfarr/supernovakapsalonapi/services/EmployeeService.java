@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+
+    private final EmployeeRepository employeeRepository;
+
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
         EmployeeEntity employee = convertToEntity(employeeDto);

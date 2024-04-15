@@ -13,8 +13,12 @@ import java.util.Optional;
 @RequestMapping("/availabilityslots")
 public class AvailabilitySlotController {
 
-    @Autowired
-    private AvailabilitySlotService availabilitySlotService;
+
+    private final AvailabilitySlotService availabilitySlotService;
+
+    public AvailabilitySlotController(AvailabilitySlotService availabilitySlotService) {
+        this.availabilitySlotService = availabilitySlotService;
+    }
 
     @PostMapping
     public ResponseEntity<AvailabilitySlotDto> createAvailabilitySlot(@RequestBody AvailabilitySlotDto availabilitySlotDto) {
