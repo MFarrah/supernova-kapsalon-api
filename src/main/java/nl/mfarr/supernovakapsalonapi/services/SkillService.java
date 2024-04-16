@@ -22,8 +22,8 @@ public class SkillService {
 
     public SkillDto createSkill(SkillDto skillDto) {
         SkillEntity skill = convertToEntity(skillDto);
-        skill = skillRepository.save(skill);
-        return convertToDto(skill);
+        SkillEntity savedSkill = skillRepository.save(skill);
+        return convertToDto(savedSkill);
     }
 
     public Optional<SkillDto> getSkillById(Long id) {
@@ -48,11 +48,9 @@ public class SkillService {
 
     private SkillEntity convertToEntity(SkillDto skillDto) {
         SkillEntity skill = new SkillEntity();
-        skill.setId(skillDto.getId());
         skill.setName(skillDto.getName());
         skill.setDescription(skillDto.getDescription());
         skill.setPrice(skillDto.getPrice());
-
         return skill;
     }
 
@@ -62,7 +60,6 @@ public class SkillService {
         skillDto.setName(skill.getName());
         skillDto.setDescription(skill.getDescription());
         skillDto.setPrice(skill.getPrice());
-
         return skillDto;
     }
 }

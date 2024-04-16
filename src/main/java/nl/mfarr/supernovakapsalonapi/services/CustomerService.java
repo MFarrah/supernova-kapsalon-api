@@ -22,8 +22,8 @@ public class CustomerService {
 
     public CustomerDto createCustomer(CustomerDto customerDto) {
         CustomerEntity customer = convertToEntity(customerDto);
-        customer = customerRepository.save(customer);
-        return convertToDto(customer);
+        CustomerEntity savedCustomer = customerRepository.save(customer);
+        return convertToDto(savedCustomer);
     }
 
     public Optional<CustomerDto> getCustomerById(Long id) {
@@ -48,12 +48,10 @@ public class CustomerService {
 
     private CustomerEntity convertToEntity(CustomerDto customerDto) {
         CustomerEntity customer = new CustomerEntity();
-        customer.setId(customerDto.getId());
         customer.setName(customerDto.getName());
         customer.setLastName(customerDto.getLastName());
         customer.setEmail(customerDto.getEmail());
         customer.setPhoneNumber(customerDto.getPhoneNumber());
-
         return customer;
     }
 
@@ -64,7 +62,6 @@ public class CustomerService {
         customerDto.setLastName(customer.getLastName());
         customerDto.setEmail(customer.getEmail());
         customerDto.setPhoneNumber(customer.getPhoneNumber());
-
         return customerDto;
     }
 }

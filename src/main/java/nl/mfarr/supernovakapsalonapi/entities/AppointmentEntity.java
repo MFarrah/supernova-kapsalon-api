@@ -46,7 +46,6 @@ public AppointmentEntity(Long id, CustomerEntity customer, EmployeeEntity employ
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) { this.id = id; }
 
     public CustomerEntity getCustomer() {
@@ -77,8 +76,12 @@ public AppointmentEntity(Long id, CustomerEntity customer, EmployeeEntity employ
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setDescription(Set<SkillEntity> skills) {
-        this.description = AppointmentDescriptionHelper.generateDescription(skills);
+        this.description = description;
     }
 
     public AvailabilitySlotEntity getAvailabilitySlot() {

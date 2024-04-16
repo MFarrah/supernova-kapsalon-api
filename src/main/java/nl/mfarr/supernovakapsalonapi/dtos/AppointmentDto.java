@@ -21,12 +21,15 @@ public class AppointmentDto {
         this.availabilitySlot = availabilitySlot;
     }
 
+
     public AppointmentDto() {
     }
 
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public CustomerDto getCustomer() {
         return customer;
@@ -56,9 +59,10 @@ public class AppointmentDto {
         return description;
     }
 
-    public void setDescription(Set<SkillDto> skills) {
-        this.description = AppointmentDescriptionHelper.generateDescriptionDto(skills);
-    }
+
+    public void setDescription(String description) {
+        this.description = description;
+        }
 
     public AvailabilitySlotDto getAvailabilitySlot() {
         return availabilitySlot;
@@ -67,5 +71,6 @@ public class AppointmentDto {
     public void setAvailabilitySlot(AvailabilitySlotDto availabilitySlot) {
         this.availabilitySlot = availabilitySlot;
     }
+
 
 }

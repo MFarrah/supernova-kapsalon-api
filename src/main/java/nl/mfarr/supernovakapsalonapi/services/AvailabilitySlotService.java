@@ -22,8 +22,8 @@ public class AvailabilitySlotService {
 
     public AvailabilitySlotDto createAvailabilitySlot(AvailabilitySlotDto availabilitySlotDto) {
         AvailabilitySlotEntity availabilitySlot = convertToEntity(availabilitySlotDto);
-        availabilitySlot = availabilitySlotRepository.save(availabilitySlot);
-        return convertToDto(availabilitySlot);
+        AvailabilitySlotEntity savedAvailabilitySlot = availabilitySlotRepository.save(availabilitySlot);
+        return convertToDto(savedAvailabilitySlot);
     }
 
     public Optional<AvailabilitySlotDto> getAvailabilitySlotById(Long id) {
@@ -48,14 +48,18 @@ public class AvailabilitySlotService {
 
     private AvailabilitySlotEntity convertToEntity(AvailabilitySlotDto availabilitySlotDto) {
         AvailabilitySlotEntity availabilitySlot = new AvailabilitySlotEntity();
-
-
+        availabilitySlot.setDayOfWeek(availabilitySlotDto.getDayOfWeek());
+        availabilitySlot.setStartTime(availabilitySlotDto.getStartTime());
+        availabilitySlot.setEndTime(availabilitySlotDto.getEndTime());
         return availabilitySlot;
     }
 
     private AvailabilitySlotDto convertToDto(AvailabilitySlotEntity availabilitySlot) {
         AvailabilitySlotDto availabilitySlotDto = new AvailabilitySlotDto();
-
+        availabilitySlotDto.setId(availabilitySlot.getId());
+        availabilitySlotDto.setDayOfWeek(availabilitySlot.getDayOfWeek());
+        availabilitySlotDto.setStartTime(availabilitySlot.getStartTime());
+        availabilitySlotDto.setEndTime(availabilitySlot.getEndTime());
         return availabilitySlotDto;
     }
 }

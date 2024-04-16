@@ -32,6 +32,8 @@ public class CustomerDto {
         return id;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public String getName() {
         return name;
     }
@@ -88,6 +90,5 @@ public class CustomerDto {
         this.appointments = appointments;
     }
 
-    public void setId(Long id) {
-    }
+
 }

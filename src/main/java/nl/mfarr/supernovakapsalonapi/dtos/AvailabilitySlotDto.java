@@ -32,6 +32,10 @@ public class AvailabilitySlotDto {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public EmployeeDto getEmployee() {
         return employee;
     }
@@ -64,6 +68,5 @@ public class AvailabilitySlotDto {
         this.endTime = endTime;
     }
 
-    public void setId(Long id) {
-    }
+
 }

@@ -22,8 +22,8 @@ public class EmployeeService {
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
         EmployeeEntity employee = convertToEntity(employeeDto);
-        employee = employeeRepository.save(employee);
-        return convertToDto(employee);
+        EmployeeEntity savedEmployee = employeeRepository.save(employee);
+        return convertToDto(savedEmployee);
     }
 
     public Optional<EmployeeDto> getEmployeeById(Long id) {
@@ -48,7 +48,6 @@ public class EmployeeService {
 
     private EmployeeEntity convertToEntity(EmployeeDto employeeDto) {
         EmployeeEntity employee = new EmployeeEntity();
-        employee.setId(employeeDto.getId());
         employee.setName(employeeDto.getName());
         employee.setLastName(employeeDto.getLastName());
         employee.setEmail(employeeDto.getEmail());
