@@ -1,5 +1,5 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
-import nl.mfarr.supernovakapsalonapi.Gender;
+import nl.mfarr.supernovakapsalonapi.helpers.Gender;
 
 import java.time.LocalDate;
 import java.util.Set;

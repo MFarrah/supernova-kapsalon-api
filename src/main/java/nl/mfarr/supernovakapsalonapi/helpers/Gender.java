@@ -1,4 +1,4 @@
-package nl.mfarr.supernovakapsalonapi;
+package nl.mfarr.supernovakapsalonapi.helpers;
 
 public enum Gender {
 
