@@ -1,4 +1,6 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
+import nl.mfarr.supernovakapsalonapi.Gender;
+
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -11,10 +13,10 @@ public class CustomerDto {
     private LocalDate dateOfBirth;
     private String email;
     private String phoneNumber;
-    private boolean gender;
+    private Gender gender;
     private Set<AppointmentDto> appointments;
 
-    public CustomerDto(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, boolean gender, Set<AppointmentDto> appointments) {
+    public CustomerDto(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, Gender gender, Set<AppointmentDto> appointments) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -74,11 +76,11 @@ public class CustomerDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -89,6 +91,5 @@ public class CustomerDto {
     public void setAppointments(Set<AppointmentDto> appointments) {
         this.appointments = appointments;
     }
-
 
 }

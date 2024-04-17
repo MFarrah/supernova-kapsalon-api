@@ -1,5 +1,7 @@
 package nl.mfarr.supernovakapsalonapi.entities;
 import jakarta.persistence.*;
+import nl.mfarr.supernovakapsalonapi.Gender;
+
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -13,11 +15,11 @@ public class CustomerEntity {
     private LocalDate dateOfBirth;
     private String email;
     private String phoneNumber;
-    private boolean gender;
+    private Gender gender;
     @OneToMany(mappedBy = "customer")
     private Set<AppointmentEntity> appointments;
 
-    public CustomerEntity(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, boolean gender, Set<AppointmentEntity> appointments) {
+    public CustomerEntity(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, Gender gender, Set<AppointmentEntity> appointments) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -77,11 +79,11 @@ public class CustomerEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -92,4 +94,5 @@ public class CustomerEntity {
     public void setAppointments(Set<AppointmentEntity> appointments) {
         this.appointments = appointments;
     }
+
 }

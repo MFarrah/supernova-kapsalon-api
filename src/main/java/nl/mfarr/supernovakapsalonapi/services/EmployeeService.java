@@ -3,7 +3,7 @@ package nl.mfarr.supernovakapsalonapi.services;
 import nl.mfarr.supernovakapsalonapi.entities.EmployeeEntity;
 import nl.mfarr.supernovakapsalonapi.repositories.EmployeeRepository;
 import nl.mfarr.supernovakapsalonapi.dtos.EmployeeDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import nl.mfarr.supernovakapsalonapi.repositories.SkillRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +15,11 @@ public class EmployeeService {
 
 
     private final EmployeeRepository employeeRepository;
+    private final SkillRepository skillRepository;
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository, SkillRepository skillRepository) {
         this.employeeRepository = employeeRepository;
+        this.skillRepository = skillRepository;
     }
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
@@ -52,6 +54,7 @@ public class EmployeeService {
         employee.setLastName(employeeDto.getLastName());
         employee.setEmail(employeeDto.getEmail());
         employee.setPhoneNumber(employeeDto.getPhoneNumber());
+
         return employee;
     }
 
@@ -62,6 +65,7 @@ public class EmployeeService {
         employeeDto.setLastName(employee.getLastName());
         employeeDto.setEmail(employee.getEmail());
         employeeDto.setPhoneNumber(employee.getPhoneNumber());
+
         return employeeDto;
     }
 }

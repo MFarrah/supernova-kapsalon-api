@@ -52,6 +52,9 @@ public class CustomerService {
         customer.setLastName(customerDto.getLastName());
         customer.setEmail(customerDto.getEmail());
         customer.setPhoneNumber(customerDto.getPhoneNumber());
+        customer.setGender(customerDto.getGender());
+        customer.setDateOfBirth(customerDto.getDateOfBirth());
+
         return customer;
     }
 
@@ -62,6 +65,9 @@ public class CustomerService {
         customerDto.setLastName(customer.getLastName());
         customerDto.setEmail(customer.getEmail());
         customerDto.setPhoneNumber(customer.getPhoneNumber());
+        customerDto.setGender(customer.getGender());
+        customerDto.setDateOfBirth(customer.getDateOfBirth());
+
         return customerDto;
     }
 }

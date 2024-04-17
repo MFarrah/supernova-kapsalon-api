@@ -14,7 +14,8 @@ public class EmployeeEntity {
     private String email;
     private String phoneNumber;
 
-    @ManyToMany(mappedBy = "employees")
+    @ManyToMany
+    @JoinTable(name = "employee_skill", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
     private Set<SkillEntity> skills;
 
     @OneToMany(mappedBy = "employee")
