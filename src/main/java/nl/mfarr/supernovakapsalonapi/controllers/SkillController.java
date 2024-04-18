@@ -26,6 +26,11 @@ public class SkillController {
         return new ResponseEntity<>(createdSkill, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<Object> getAllSkills() {
+        return ResponseEntity.ok(skillService.getAllSkills());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<SkillDto>> getSkillById(@PathVariable Long id) {
         Optional<SkillDto> skillDto = skillService.getSkillById(id);

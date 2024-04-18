@@ -5,6 +5,7 @@ import nl.mfarr.supernovakapsalonapi.repositories.SkillRepository;
 import nl.mfarr.supernovakapsalonapi.dtos.SkillDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import nl.mfarr.supernovakapsalonapi.mappers.SkillMapper;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,53 +14,41 @@ import java.util.stream.Collectors;
 @Service
 public class SkillService {
 
-
     private final SkillRepository skillRepository;
+    private final SkillMapper skillMapper;
 
-    public SkillService(SkillRepository skillRepository) {
+    @Autowired
+    public SkillService(SkillRepository skillRepository, SkillMapper skillMapper) {
         this.skillRepository = skillRepository;
+        this.skillMapper = skillMapper;
+
     }
+
 
     public SkillDto createSkill(SkillDto skillDto) {
-        SkillEntity skill = convertToEntity(skillDto);
-        SkillEntity savedSkill = skillRepository.save(skill);
-        return convertToDto(savedSkill);
+        SkillEntity skillEntity = skillMapper.convertToEntity(skillDto);
+        SkillEntity savedSkill = skillRepository.save(skillEntity);
+        return skillMapper.convertToDto(savedSkill);
     }
 
+
     public Optional<SkillDto> getSkillById(Long id) {
-        return skillRepository.findById(id).map(this::convertToDto);
+        return skillRepository.findById(id).map(skillMapper::convertToDto);
     }
 
     public List<SkillDto> getAllSkills() {
         return skillRepository.findAll().stream()
-                .map(this::convertToDto)
+                .map(skillMapper::convertToDto)
                 .collect(Collectors.toList());
     }
 
     public SkillDto updateSkill(Long id, SkillDto skillDto) {
-        SkillEntity skill = convertToEntity(skillDto);
-        skill = skillRepository.save(skill);
-        return convertToDto(skill);
+        SkillEntity skillEntity = skillMapper.convertToEntity(skillDto);
+        skillEntity = skillRepository.save(skillEntity);
+        return skillMapper.convertToDto(skillEntity);
     }
 
     public void deleteSkill(Long id) {
         skillRepository.deleteById(id);
-    }
-
-    private SkillEntity convertToEntity(SkillDto skillDto) {
-        SkillEntity skill = new SkillEntity();
-        skill.setName(skillDto.getName());
-        skill.setDescription(skillDto.getDescription());
-        skill.setPrice(skillDto.getPrice());
-        return skill;
-    }
-
-    private SkillDto convertToDto(SkillEntity skill) {
-        SkillDto skillDto = new SkillDto();
-        skillDto.setId(skill.getId());
-        skillDto.setName(skill.getName());
-        skillDto.setDescription(skill.getDescription());
-        skillDto.setPrice(skill.getPrice());
-        return skillDto;
     }
 }

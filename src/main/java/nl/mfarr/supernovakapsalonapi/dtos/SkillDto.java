@@ -9,9 +9,9 @@ public class SkillDto {
     private String name;
     private String description;
     private double price;
-    private Set<EmployeeEntity> employees;
+    private Set<Long> employees;
 
-    public SkillDto(Long id, String name, String description, double price, Set<EmployeeEntity> employees) {
+    public SkillDto(Long id, String name, String description, double price, Set<Long> employees) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -52,11 +52,11 @@ public class SkillDto {
         this.price = price;
     }
 
-    public Set<EmployeeEntity> getEmployees() {
+    public Set<Long> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(Set<EmployeeEntity> employees) {
+    public void setEmployees(Set<Long> employees) {
         this.employees = employees;
     }
 

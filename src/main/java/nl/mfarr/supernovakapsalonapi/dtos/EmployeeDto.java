@@ -1,7 +1,7 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
 import nl.mfarr.supernovakapsalonapi.entities.AppointmentEntity;
 import nl.mfarr.supernovakapsalonapi.entities.AvailabilitySlotEntity;
-import nl.mfarr.supernovakapsalonapi.entities.SkillEntity;
+
 
 import java.util.Set;
 
@@ -13,7 +13,7 @@ public class EmployeeDto {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private Set<SkillEntity> skills;
+    private Set<Long> skills; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
     private Set<AppointmentEntity> appointments;
     private Set<AvailabilitySlotEntity> availabilitySlots;
 
@@ -61,11 +61,11 @@ public class EmployeeDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<SkillEntity> getSkills() {
+    public Set<Long> getSkills() {
         return skills;
     }
 
-    public void setSkills(Set<SkillEntity> skills) {
+    public void setSkills(Set<Long> skills) {
         this.skills = skills;
     }
 
