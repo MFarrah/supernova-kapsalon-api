@@ -20,27 +20,5 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
-    @PostMapping
-    public ResponseEntity<AppointmentDto> createAppointment(@RequestBody AppointmentDto appointmentDto) {
-        AppointmentDto createdAppointment = appointmentService.createAppointment(appointmentDto);
-        return new ResponseEntity<>(createdAppointment, HttpStatus.CREATED);
-    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<AppointmentDto>> getAppointmentById(@PathVariable Long id) {
-        Optional<AppointmentDto> appointmentDto = appointmentService.getAppointmentById(id);
-        return ResponseEntity.ok(appointmentDto);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<AppointmentDto> updateAppointment(@PathVariable Long id, @RequestBody AppointmentDto appointmentDto) {
-        AppointmentDto updatedAppointment = appointmentService.updateAppointment(id, appointmentDto);
-        return ResponseEntity.ok(updatedAppointment);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(@PathVariable Long id) {
-        appointmentService.deleteAppointment(id);
-        return ResponseEntity.noContent().build();
-    }
 }

@@ -1,8 +1,7 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
-import nl.mfarr.supernovakapsalonapi.entities.AppointmentEntity;
-import nl.mfarr.supernovakapsalonapi.entities.AvailabilitySlotEntity;
 
 
+import java.util.Collection;
 import java.util.Set;
 
 
@@ -13,11 +12,14 @@ public class EmployeeDto {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private Set<Long> skills; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
-    private Set<AppointmentEntity> appointments;
-    private Set<AvailabilitySlotEntity> availabilitySlots;
+    private Set<Long> skillId;
+    private SkillDto skills;
+    private Set<Long> appointments;
+    private Set<Long> availabilitySlots;
 
-
+    public void setSkills(SkillDto skills) {
+        this.skills = skills;
+    }
 
     public EmployeeDto() {
     }
@@ -62,27 +64,30 @@ public class EmployeeDto {
     }
 
     public Set<Long> getSkills() {
-        return skills;
+        return skillId;
     }
 
-    public void setSkills(Set<Long> skills) {
-        this.skills = skills;
+    public void setSkillId(Set<Long> skillId) {
+        this.skillId = skillId;
     }
 
-    public Set<AppointmentEntity> getAppointments() {
+    public Set<Long> getAppointments() {
         return appointments;
     }
 
-    public void setAppointments(Set<AppointmentEntity> appointments) {
+    public void setAppointments(Set<Long> appointments) {
         this.appointments = appointments;
     }
 
-    public Set<AvailabilitySlotEntity> getAvailabilitySlots() {
+    public Set<Long> getAvailabilitySlots() {
         return availabilitySlots;
     }
 
-    public void setAvailabilitySlots(Set<AvailabilitySlotEntity> availabilitySlots) {
+    public void setAvailabilitySlots(Set<Long> availabilitySlots) {
         this.availabilitySlots = availabilitySlots;
     }
 
+    public Collection<Object> getSkillId() {
+        return null;
+    }
 }
