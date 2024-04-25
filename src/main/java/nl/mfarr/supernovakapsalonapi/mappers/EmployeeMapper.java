@@ -22,17 +22,10 @@ public class EmployeeMapper {
         employeeEntity.setLastName(employeeDto.getLastName());
         employeeEntity.setEmail(employeeDto.getEmail());
         employeeEntity.setPhoneNumber(employeeDto.getPhoneNumber());
-<<<<<<< HEAD
         employeeEntity.setSkills(null);
         employeeEntity.setAppointments(null);
         employeeEntity.setAvailabilitySlots(null);
-=======
 
-        Set<SkillEntity> skills = employeeDto.getSkills().stream()
-                .map(skillId -> skillRepository.findById(skillId).orElse(null))
-                .collect(Collectors.toSet());
-        employeeEntity.setSkills(skills);
->>>>>>> feature/services
 
         return employeeEntity;
     }
@@ -44,18 +37,10 @@ public class EmployeeMapper {
         employeeDto.setLastName(employeeEntity.getLastName());
         employeeDto.setEmail(employeeEntity.getEmail());
         employeeDto.setPhoneNumber(employeeEntity.getPhoneNumber());
-<<<<<<< HEAD
         employeeDto.setSkills(null);
         employeeDto.setAppointments(null);
         employeeDto.setAvailabilitySlots(null);
-=======
 
-
-        Set<Long> skillIds = employeeEntity.getSkills().stream()
-                .map(SkillEntity::getId)
-                .collect(Collectors.toSet());
-
->>>>>>> feature/services
 
         return employeeDto;
     }

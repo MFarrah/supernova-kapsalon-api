@@ -12,16 +12,4 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/appointments")
 public class AppointmentController {
-
-
-<<<<<<< HEAD
-=======
-    private final AppointmentService appointmentService;
-
-    public AppointmentController(AppointmentService appointmentService) {
-        this.appointmentService = appointmentService;
-    }
-
-
->>>>>>> feature/services
 }

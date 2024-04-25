@@ -1,6 +1,9 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
 
 
+import nl.mfarr.supernovakapsalonapi.entities.AppointmentEntity;
+import nl.mfarr.supernovakapsalonapi.entities.AvailabilitySlotEntity;
+
 import java.util.Collection;
 import java.util.Set;
 
@@ -12,21 +15,22 @@ public class EmployeeDto {
     private String lastName;
     private String email;
     private String phoneNumber;
-<<<<<<< HEAD
     private Set<Long> skillid; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
     private Set <SkillDto> skills;
     private Set<AppointmentEntity> appointments;
     private Set<AvailabilitySlotEntity> availabilitySlots;
 
-=======
-    private Set<Long> skillId;
-    private SkillDto skills;
-    private Set<Long> appointments;
-    private Set<Long> availabilitySlots;
->>>>>>> feature/services
 
-    public void setSkills(SkillDto skills) {
+    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<Long> skillid, Set<SkillDto> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.skillid = skillid;
         this.skills = skills;
+        this.appointments = appointments;
+        this.availabilitySlots = availabilitySlots;
     }
 
     public EmployeeDto() {
@@ -71,7 +75,6 @@ public class EmployeeDto {
         this.phoneNumber = phoneNumber;
     }
 
-<<<<<<< HEAD
     public Set<Long> getSkillid() {
         return skillid;
     }
@@ -86,33 +89,22 @@ public class EmployeeDto {
 
     public void setSkills(Set<SkillDto> skills) {
         this.skills = skills;
-=======
-    public Set<Long> getSkills() {
-        return skillId;
     }
 
-    public void setSkillId(Set<Long> skillId) {
-        this.skillId = skillId;
->>>>>>> feature/services
-    }
-
-    public Set<Long> getAppointments() {
+    public Set<AppointmentEntity> getAppointments() {
         return appointments;
     }
 
-    public void setAppointments(Set<Long> appointments) {
+    public void setAppointments(Set<AppointmentEntity> appointments) {
         this.appointments = appointments;
     }
 
-    public Set<Long> getAvailabilitySlots() {
+    public Set<AvailabilitySlotEntity> getAvailabilitySlots() {
         return availabilitySlots;
     }
 
-    public void setAvailabilitySlots(Set<Long> availabilitySlots) {
+    public void setAvailabilitySlots(Set<AvailabilitySlotEntity> availabilitySlots) {
         this.availabilitySlots = availabilitySlots;
     }
 
-    public Collection<Object> getSkillId() {
-        return null;
-    }
 }
