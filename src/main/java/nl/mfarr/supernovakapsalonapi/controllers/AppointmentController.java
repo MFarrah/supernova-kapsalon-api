@@ -14,4 +14,14 @@ import java.util.Optional;
 public class AppointmentController {
 
 
+<<<<<<< HEAD
+=======
+    private final AppointmentService appointmentService;
+
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+
+
+>>>>>>> feature/services
 }
