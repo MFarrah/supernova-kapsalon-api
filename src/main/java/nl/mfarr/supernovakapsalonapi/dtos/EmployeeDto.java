@@ -13,7 +13,8 @@ public class EmployeeDto {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private Set<Long> skills; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
+    private Set<Long> skillid; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
+    private Set <SkillDto> skills;
     private Set<AppointmentEntity> appointments;
     private Set<AvailabilitySlotEntity> availabilitySlots;
 
@@ -61,11 +62,19 @@ public class EmployeeDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Long> getSkills() {
+    public Set<Long> getSkillid() {
+        return skillid;
+    }
+
+    public void setSkillid(Set<Long> skillid) {
+        this.skillid = skillid;
+    }
+
+    public Set<SkillDto> getSkills() {
         return skills;
     }
 
-    public void setSkills(Set<Long> skills) {
+    public void setSkills(Set<SkillDto> skills) {
         this.skills = skills;
     }
 
