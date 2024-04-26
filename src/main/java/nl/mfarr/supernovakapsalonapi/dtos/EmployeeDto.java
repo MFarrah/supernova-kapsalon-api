@@ -12,22 +12,22 @@ public class EmployeeDto {
 
     private Long id;
     private String name;
-    private String lastName;
+    private String lastNames;
     private String email;
     private String phoneNumber;
-    private Set<Long> skillid; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
+    private Set<Long> skillId; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
     private Set <SkillDto> skills;
     private Set<AppointmentEntity> appointments;
     private Set<AvailabilitySlotEntity> availabilitySlots;
 
 
-    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<Long> skillid, Set<SkillDto> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
+    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<Long> skillId, Set<SkillDto> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
         this.id = id;
         this.name = name;
-        this.lastName = lastName;
+        this.lastNames = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.skillid = skillid;
+        this.skillId = skillId;
         this.skills = skills;
         this.appointments = appointments;
         this.availabilitySlots = availabilitySlots;
@@ -52,11 +52,11 @@ public class EmployeeDto {
     }
 
     public String getLastName() {
-        return lastName;
+        return lastNames;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastNames = lastName;
     }
 
     public String getEmail() {
@@ -75,12 +75,12 @@ public class EmployeeDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Long> getSkillid() {
-        return skillid;
+    public Set<Long> getSkillId() {
+        return skillId;
     }
 
-    public void setSkillid(Set<Long> skillid) {
-        this.skillid = skillid;
+    public void setSkillId(Set<Long> skillId) {
+        this.skillId = skillId;
     }
 
     public Set<SkillDto> getSkills() {

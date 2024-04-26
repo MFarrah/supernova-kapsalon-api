@@ -6,6 +6,8 @@ import nl.mfarr.supernovakapsalonapi.repositories.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,13 +18,14 @@ public class EmployeeMapper {
     @Autowired
     private SkillRepository skillRepository;
 
-    public EmployeeEntity convertToEntity(EmployeeDto employeeDto) {
+    public EmployeeEntity convertToEntity(EmployeeDto employeeDto, List<SkillEntity> skillEntities) {
+        Set <SkillEntity> skillEntitiesSet = new HashSet<>(skillEntities);
         EmployeeEntity employeeEntity = new EmployeeEntity();
         employeeEntity.setName(employeeDto.getName());
         employeeEntity.setLastName(employeeDto.getLastName());
         employeeEntity.setEmail(employeeDto.getEmail());
         employeeEntity.setPhoneNumber(employeeDto.getPhoneNumber());
-        employeeEntity.setSkills(null);
+        employeeEntity.setSkills(skillEntitiesSet);
         employeeEntity.setAppointments(null);
         employeeEntity.setAvailabilitySlots(null);
 
