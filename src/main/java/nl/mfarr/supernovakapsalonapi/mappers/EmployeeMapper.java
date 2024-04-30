@@ -1,5 +1,6 @@
 package nl.mfarr.supernovakapsalonapi.mappers;
 import nl.mfarr.supernovakapsalonapi.dtos.EmployeeDto;
+import nl.mfarr.supernovakapsalonapi.dtos.SkillDto;
 import nl.mfarr.supernovakapsalonapi.entities.EmployeeEntity;
 import nl.mfarr.supernovakapsalonapi.entities.SkillEntity;
 import nl.mfarr.supernovakapsalonapi.repositories.SkillRepository;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 public class EmployeeMapper {
 
     @Autowired
-    private SkillRepository skillRepository;
+    private SkillMapper skillMapper;
 
     public EmployeeEntity convertToEntity(EmployeeDto employeeDto, List<SkillEntity> skillEntities) {
         Set <SkillEntity> skillEntitiesSet = new HashSet<>(skillEntities);
@@ -40,7 +41,10 @@ public class EmployeeMapper {
         employeeDto.setLastName(employeeEntity.getLastName());
         employeeDto.setEmail(employeeEntity.getEmail());
         employeeDto.setPhoneNumber(employeeEntity.getPhoneNumber());
-        employeeDto.setSkills(null);
+        Set<SkillDto> skills = employeeEntity.getSkills().stream()
+                .map(skillMapper::convertToDto)
+                .collect(Collectors.toSet());
+        employeeDto.setSkills(skills);
         employeeDto.setAppointments(null);
         employeeDto.setAvailabilitySlots(null);
 

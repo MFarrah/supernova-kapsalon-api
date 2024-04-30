@@ -12,10 +12,10 @@ public class EmployeeDto {
 
     private Long id;
     private String name;
-    private String lastNames;
+    private String lastName;
     private String email;
     private String phoneNumber;
-    private Set<Long> skillId; // changed from Set<SkillEntity> to Set<Long> // create a new method in employeeservice toconvert the set of longs to a set of skills
+    private Set<Long> skillId;
     private Set <SkillDto> skills;
     private Set<AppointmentEntity> appointments;
     private Set<AvailabilitySlotEntity> availabilitySlots;
@@ -24,7 +24,7 @@ public class EmployeeDto {
     public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<Long> skillId, Set<SkillDto> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
         this.id = id;
         this.name = name;
-        this.lastNames = lastName;
+        this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.skillId = skillId;
@@ -52,11 +52,11 @@ public class EmployeeDto {
     }
 
     public String getLastName() {
-        return lastNames;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastNames = lastName;
+        this.lastName = lastName;
     }
 
     public String getEmail() {
