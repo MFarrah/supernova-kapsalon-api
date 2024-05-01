@@ -3,7 +3,6 @@ import nl.mfarr.supernovakapsalonapi.dtos.EmployeeDto;
 import nl.mfarr.supernovakapsalonapi.dtos.SkillDto;
 import nl.mfarr.supernovakapsalonapi.entities.EmployeeEntity;
 import nl.mfarr.supernovakapsalonapi.entities.SkillEntity;
-import nl.mfarr.supernovakapsalonapi.repositories.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
