@@ -24,7 +24,6 @@ public class SkillService {
 
     }
 
-
     public SkillDto createSkill(SkillDto skillDto) {
         SkillEntity skillEntity = skillMapper.convertToEntity(skillDto);
         SkillEntity savedSkill = skillRepository.save(skillEntity);
@@ -34,7 +33,6 @@ public class SkillService {
     public List<SkillDto> createSkills(List <SkillDto> skillDtos) {
         return skillDtos.stream().map(this::createSkill).collect(Collectors.toList());
     }
-
 
     public Optional<SkillDto> getSkillById(Long id) {
         return skillRepository.findById(id).map(skillMapper::convertToDto);
@@ -46,10 +44,13 @@ public class SkillService {
                 .collect(Collectors.toList());
     }
 
-    public SkillDto updateSkill(Long id, SkillDto skillDto) {
-        SkillEntity skillEntity = skillMapper.convertToEntity(skillDto);
-        skillEntity = skillRepository.save(skillEntity);
-        return skillMapper.convertToDto(skillEntity);
+    public SkillDto patchSkill(Long id, SkillDto skillDto) {
+        SkillEntity skillEntity = skillRepository.findById(id).orElseThrow();
+        skillEntity.setName(skillDto.getName());
+        skillEntity.setDescription(skillDto.getDescription());
+        skillEntity.setPrice(skillDto.getPrice());
+        SkillEntity savedSkill = skillRepository.save(skillEntity);
+        return skillMapper.convertToDto(savedSkill);
     }
 
     public void deleteSkill(Long id) {

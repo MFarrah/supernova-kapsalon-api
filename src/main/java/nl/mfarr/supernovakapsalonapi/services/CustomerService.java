@@ -30,8 +30,18 @@ public class CustomerService {
         return customerMapper.convertToDto(savedCustomer);
     }
 
+    public List<CustomerDto> createCustomers(List<CustomerDto> customerDtos) {
+        return customerDtos.stream().map(this::createCustomer).collect(Collectors.toList());
+    }
+
     public Optional<CustomerDto> getCustomerById(Long id) {
         return customerRepository.findById(id).map(customerMapper::convertToDto);
+    }
+
+    public List<CustomerDto> getCustomerByEmail(String email) {
+        return customerRepository.findByEmail(email).stream()
+                .map(customerMapper::convertToDto)
+                .collect(Collectors.toList());
     }
 
     public List<CustomerDto> getAllCustomers() {
@@ -40,10 +50,17 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 
-    public CustomerDto updateCustomer(Long id, CustomerDto customerDto) {
-        CustomerEntity customerEntity = customerMapper.convertToEntity(customerDto);
-        customerEntity = customerRepository.save(customerEntity);
-        return customerMapper.convertToDto(customerEntity);
+   public CustomerDto patchCustomer(Long id, CustomerDto customerDto) {
+        CustomerEntity customerEntity = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        customerEntity.setName(customerDto.getName());
+        customerEntity.setLastName(customerDto.getLastName());
+        customerEntity.setDateOfBirth(customerDto.getDateOfBirth());
+        customerEntity.setEmail(customerDto.getEmail());
+        customerEntity.setPhoneNumber(customerDto.getPhoneNumber());
+        customerEntity.setGender(customerDto.getGender());
+        CustomerEntity savedCustomer = customerRepository.save(customerEntity);
+        return customerMapper.convertToDto(savedCustomer);
     }
 
     public void deleteCustomer(Long id) {

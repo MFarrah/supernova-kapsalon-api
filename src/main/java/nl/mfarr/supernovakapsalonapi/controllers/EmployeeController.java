@@ -40,6 +40,12 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeDto);
     }
 
+    @GetMapping("/skill/{skillId}")
+    public ResponseEntity<List<EmployeeDto>> getEmployeesBySkillId(@PathVariable Long skillId) {
+        List<EmployeeDto> employees = employeeService.getEmployeesBySkillId(skillId);
+        return ResponseEntity.ok(employees);
+    }
+
     @GetMapping
     public ResponseEntity<Object> getAllEmployees() {
         List<EmployeeDto> employees = employeeService.getAllEmployees();
@@ -52,15 +58,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
-        EmployeeDto updatedEmployee = employeeService.updateEmployee(id, employeeDto);
-        return ResponseEntity.ok(updatedEmployee);
-    }
-
     @PatchMapping("/{id}")
     public ResponseEntity<EmployeeDto> updateEmployeePartially(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
-        EmployeeDto updatedEmployee = employeeService.updateEmployeePartially(id, employeeDto);
+        EmployeeDto updatedEmployee = employeeService.patchEmployee(id, employeeDto);
         return ResponseEntity.ok(updatedEmployee);
     }
 

@@ -2,11 +2,11 @@ package nl.mfarr.supernovakapsalonapi.controllers;
 
 import nl.mfarr.supernovakapsalonapi.dtos.CustomerDto;
 import nl.mfarr.supernovakapsalonapi.services.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,16 +26,34 @@ public class CustomerController {
         return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
     }
 
+    @PostMapping("/batch")
+    public ResponseEntity<Iterable<CustomerDto>> createCustomers(@RequestBody Iterable<CustomerDto> customerDtos) {
+        Iterable<CustomerDto> createdCustomers = customerService.createCustomers((List<CustomerDto>) customerDtos);
+        return new ResponseEntity<>(createdCustomers, HttpStatus.CREATED);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<CustomerDto>> getCustomerById(@PathVariable Long id) {
         Optional<CustomerDto> customerDto = customerService.getCustomerById(id);
         return ResponseEntity.ok(customerDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CustomerDto> updateCustomer(@PathVariable Long id, @RequestBody CustomerDto customerDto) {
-        CustomerDto updatedCustomer = customerService.updateCustomer(id, customerDto);
-        return ResponseEntity.ok(updatedCustomer);
+    @GetMapping("/email/{email}")
+    public ResponseEntity<List<CustomerDto>> getCustomerByEmail(@PathVariable String email) {
+        List<CustomerDto> customers = customerService.getCustomerByEmail(email);
+        return ResponseEntity.ok(customers);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
+        List<CustomerDto> customers = customerService.getAllCustomers();
+        return ResponseEntity.ok(customers);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<CustomerDto> patchCustomer(@PathVariable Long id, @RequestBody CustomerDto customerDto) {
+        CustomerDto patchedCustomer = customerService.patchCustomer(id, customerDto);
+        return ResponseEntity.ok(patchedCustomer);
     }
 
     @DeleteMapping("/{id}")

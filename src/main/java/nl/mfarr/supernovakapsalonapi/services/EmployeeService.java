@@ -37,7 +37,6 @@ public class EmployeeService {
         var skillEntities = skillRepository.findAllById(employeeDto.getSkillId());
         EmployeeEntity employeeEntity = employeeMapper.convertToEntity(employeeDto, skillEntities);
         EmployeeEntity savedEmployee = employeeRepository.save(employeeEntity);
-
         return employeeMapper.convertToDto(savedEmployee);
     }
 
@@ -50,6 +49,11 @@ public class EmployeeService {
         return employeeRepository.findById(id).map(employeeMapper::convertToDto);
     }
 
+    public List<EmployeeDto> getEmployeesBySkillId(Long skillId) {
+        List<EmployeeEntity> employeeEntities = employeeRepository.findBySkillId(skillId);
+        return employeeEntities.stream().map(employeeMapper::convertToDto).collect(Collectors.toList());
+    }
+
     public Optional<EmployeeDto> getEmployeeByEmail(String email) {
         return employeeRepository.findByEmail(email).map(employeeMapper::convertToDto);
     }
@@ -58,36 +62,20 @@ public class EmployeeService {
         return employeeRepository.findAll().stream().map(employeeMapper::convertToDto).collect(Collectors.toList());
     }
 
-    public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
-        var skillEntities = skillRepository.findAllById(employeeDto.getSkillId());
-        EmployeeEntity employeeEntity = employeeMapper.convertToEntity(employeeDto, skillEntities);
-        employeeEntity = employeeRepository.save(employeeEntity);
-        return employeeMapper.convertToDto(employeeEntity);
-    }
-
-    public void deleteEmployee(Long id) {
-        employeeRepository.deleteById(id);
-    }
-
-    public EmployeeDto updateEmployeePartially(Long id, EmployeeDto employeeDto) {
+    public EmployeeDto patchEmployee(Long id, EmployeeDto employeeDto) {
         EmployeeEntity employeeEntity = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
-
         if (employeeDto.getName() != null) {
             employeeEntity.setName(employeeDto.getName());
         }
-
         if (employeeDto.getLastName() != null) {
             employeeEntity.setLastName(employeeDto.getLastName());
         }
-
         if (employeeDto.getPhoneNumber() != null) {
             employeeEntity.setPhoneNumber(employeeDto.getPhoneNumber());
         }
-
         if (employeeDto.getEmail() != null) {
             employeeEntity.setEmail(employeeDto.getEmail());
         }
-
         if (employeeDto.getSkillId() != null) {
             if (employeeDto.getSkillId().isEmpty()) {
                 employeeEntity.setSkills(new HashSet<>());
@@ -102,5 +90,9 @@ public class EmployeeService {
         }
         EmployeeEntity savedEmployee = employeeRepository.save(employeeEntity);
         return employeeMapper.convertToDto(savedEmployee);
+    }
+
+    public void deleteEmployee(Long id) {
+        employeeRepository.deleteById(id);
     }
 }
