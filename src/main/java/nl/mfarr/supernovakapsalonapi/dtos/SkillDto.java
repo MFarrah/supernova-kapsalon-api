@@ -9,16 +9,13 @@ public class SkillDto {
     private String name;
     private String description;
     private double price;
-    private Set<Long> employeeId;
-    private Set<EmployeeDto> employees;
 
-    public SkillDto(Long id, String name, String description, double price, Set<Long> employeeId, Set<EmployeeDto> employees) {
+
+    public SkillDto(Long id, String name, String description, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.employeeId = employeeId;
-        this.employees = employees;
     }
 
     public SkillDto() {
@@ -56,22 +53,6 @@ public class SkillDto {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public Set<Long> getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Set<Long> employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public Set<EmployeeDto> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<EmployeeDto> employees) {
-        this.employees = employees;
     }
 
 }

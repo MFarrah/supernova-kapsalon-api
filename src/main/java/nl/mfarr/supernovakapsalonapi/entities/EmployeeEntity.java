@@ -1,5 +1,4 @@
 package nl.mfarr.supernovakapsalonapi.entities;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -10,9 +9,16 @@ public class EmployeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "email", unique = true)
     private String email;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @ManyToMany

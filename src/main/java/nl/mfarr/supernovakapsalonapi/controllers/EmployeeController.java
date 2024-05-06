@@ -27,6 +27,13 @@ public class EmployeeController {
         return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
     }
 
+    @PostMapping("/batch")
+    public ResponseEntity<List<EmployeeDto>> createEmployees(@RequestBody List<EmployeeDto> employeeDtos) {
+        List<EmployeeDto> createdEmployees = employeeService.createEmployees(employeeDtos);
+        return new ResponseEntity<>(createdEmployees, HttpStatus.CREATED);
+    }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<EmployeeDto>> getEmployeeById(@PathVariable Long id) {
         Optional<EmployeeDto> employeeDto = employeeService.getEmployeeById(id);
@@ -39,9 +46,21 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Optional<EmployeeDto>> getEmployeeByEmail(@PathVariable String email) {
+        Optional<EmployeeDto> employeeDto = employeeService.getEmployeeByEmail(email);
+        return ResponseEntity.ok(employeeDto);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
         EmployeeDto updatedEmployee = employeeService.updateEmployee(id, employeeDto);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<EmployeeDto> updateEmployeePartially(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
+        EmployeeDto updatedEmployee = employeeService.updateEmployeePartially(id, employeeDto);
         return ResponseEntity.ok(updatedEmployee);
     }
 

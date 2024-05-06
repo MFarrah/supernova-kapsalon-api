@@ -13,18 +13,14 @@ public class SkillEntity {
         private String description;
         private double price;
 
-        @ManyToMany
-        @JoinTable(name = "employee_skill",
-                joinColumns = @JoinColumn(name = "skill_id"),
-                inverseJoinColumns = @JoinColumn(name = "employee_id"))
-        private Set<EmployeeEntity> employees;
 
-        public SkillEntity(Long id, String name, String description, double price, Set<EmployeeEntity> employees) {
+
+        public SkillEntity(Long id, String name, String description, double price) {
             this.id = id;
             this.name = name;
             this.description = description;
             this.price = price;
-            this.employees = employees;
+
         }
 
         public SkillEntity() {
@@ -60,11 +56,4 @@ public class SkillEntity {
                 this.price = price;
         }
 
-        public Set<EmployeeEntity> getEmployees() {
-                return employees;
-        }
-
-        public void setEmployees(Set<EmployeeEntity> employees) {
-                this.employees = employees;
-        }
 }

@@ -14,7 +14,7 @@ public class SkillMapper {
         skillEntity.setName(skillDto.getName());
         skillEntity.setDescription(skillDto.getDescription());
         skillEntity.setPrice(skillDto.getPrice());
-        skillEntity.setEmployees(null);
+
         return skillEntity;
     }
 
@@ -24,8 +24,7 @@ public class SkillMapper {
         skillDto.setName(skillEntity.getName());
         skillDto.setDescription(skillEntity.getDescription());
         skillDto.setPrice(skillEntity.getPrice());
-        skillDto.setEmployeeId(null);
-        skillDto.setEmployees(null);
+
 
         return skillDto;
     }

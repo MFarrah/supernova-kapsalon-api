@@ -31,6 +31,10 @@ public class SkillService {
         return skillMapper.convertToDto(savedSkill);
     }
 
+    public List<SkillDto> createSkills(List <SkillDto> skillDtos) {
+        return skillDtos.stream().map(this::createSkill).collect(Collectors.toList());
+    }
+
 
     public Optional<SkillDto> getSkillById(Long id) {
         return skillRepository.findById(id).map(skillMapper::convertToDto);
