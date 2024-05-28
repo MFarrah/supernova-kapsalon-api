@@ -1,5 +1,7 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
 import nl.mfarr.supernovakapsalonapi.entities.EmployeeEntity;
+
+import java.time.Duration;
 import java.util.Set;
 
 public class SkillDto {
@@ -9,13 +11,15 @@ public class SkillDto {
     private String name;
     private String description;
     private double price;
+    private Duration duration;
 
 
-    public SkillDto(Long id, String name, String description, double price) {
+    public SkillDto(Long id, String name, String description, double price, Duration duration) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.duration = duration;
     }
 
     public SkillDto() {
@@ -53,6 +57,14 @@ public class SkillDto {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 
 }

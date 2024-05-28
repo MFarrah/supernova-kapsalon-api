@@ -12,4 +12,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/appointments")
 public class AppointmentController {
+
+
 }

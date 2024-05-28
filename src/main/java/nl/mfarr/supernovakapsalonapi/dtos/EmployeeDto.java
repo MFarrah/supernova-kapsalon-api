@@ -17,11 +17,11 @@ public class EmployeeDto {
     private String phoneNumber;
     private Set<Long> skillId;
     private Set <SkillDto> skills;
-    private Set<AppointmentEntity> appointments;
-    private Set<AvailabilitySlotEntity> availabilitySlots;
+    private Set<AppointmentDto> appointments;
+    private Set<AvailabilitySlotDto> availabilitySlots;
 
 
-    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<Long> skillId, Set<SkillDto> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
+    public EmployeeDto(Long id, String name, String lastName, String email, String phoneNumber, Set<Long> skillId, Set<SkillDto> skills, Set<AppointmentDto> appointments, Set<AvailabilitySlotDto> availabilitySlots) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -91,19 +91,19 @@ public class EmployeeDto {
         this.skills = skills;
     }
 
-    public Set<AppointmentEntity> getAppointments() {
+    public Set<AppointmentDto> getAppointments() {
         return appointments;
     }
 
-    public void setAppointments(Set<AppointmentEntity> appointments) {
+    public void setAppointments(Set<AppointmentDto> appointments) {
         this.appointments = appointments;
     }
 
-    public Set<AvailabilitySlotEntity> getAvailabilitySlots() {
+    public Set<AvailabilitySlotDto> getAvailabilitySlots() {
         return availabilitySlots;
     }
 
-    public void setAvailabilitySlots(Set<AvailabilitySlotEntity> availabilitySlots) {
+    public void setAvailabilitySlots(Set<AvailabilitySlotDto> availabilitySlots) {
         this.availabilitySlots = availabilitySlots;
     }
 

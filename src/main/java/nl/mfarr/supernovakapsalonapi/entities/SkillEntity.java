@@ -2,6 +2,7 @@ package nl.mfarr.supernovakapsalonapi.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.time.Duration;
 import java.util.Set;
 @Entity
 public class SkillEntity {
@@ -12,14 +13,16 @@ public class SkillEntity {
         private String name;
         private String description;
         private double price;
+        private Duration duration;
 
 
 
-        public SkillEntity(Long id, String name, String description, double price) {
+        public SkillEntity(Long id, String name, String description, double price, Duration duration) {
             this.id = id;
             this.name = name;
             this.description = description;
             this.price = price;
+            this.duration = duration;
 
         }
 
@@ -56,4 +59,11 @@ public class SkillEntity {
                 this.price = price;
         }
 
+        public Duration getDuration() {
+            return duration;
+        }
+
+        public void setDuration(Duration duration) {
+            this.duration = duration;
+        }
 }

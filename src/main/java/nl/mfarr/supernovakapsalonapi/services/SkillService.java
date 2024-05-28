@@ -49,6 +49,7 @@ public class SkillService {
         skillEntity.setName(skillDto.getName());
         skillEntity.setDescription(skillDto.getDescription());
         skillEntity.setPrice(skillDto.getPrice());
+        skillEntity.setDuration(skillDto.getDuration());
         SkillEntity savedSkill = skillRepository.save(skillEntity);
         return skillMapper.convertToDto(savedSkill);
     }
