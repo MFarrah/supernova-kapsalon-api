@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,7 +31,14 @@ public class EmployeeService {
     }
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-        var skillEntities = skillRepository.findAllById(employeeDto.getSkillId());
+        List<Long> skillIds = (List<Long>) employeeDto.getSkillId();
+        List<SkillEntity> skillEntities;
+
+        if (skillIds == null || skillIds.isEmpty()) {
+            skillEntities = Collections.emptyList();
+        } else {
+            skillEntities = skillRepository.findAllById(skillIds);
+        }
         EmployeeEntity employeeEntity = employeeMapper.convertToEntity(employeeDto, skillEntities);
         EmployeeEntity savedEmployee = employeeRepository.save(employeeEntity);
         return employeeMapper.convertToDto(savedEmployee);

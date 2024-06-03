@@ -2,6 +2,8 @@ package nl.mfarr.supernovakapsalonapi.entities;
 import jakarta.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Set;
+
 
 @Entity
 public class AvailabilitySlotEntity {
@@ -19,6 +21,7 @@ public class AvailabilitySlotEntity {
     private LocalTime startTime;
 
     private LocalTime endTime;
+
 
     public AvailabilitySlotEntity(Long id, EmployeeEntity employee, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.id = id;
