@@ -6,16 +6,16 @@ import java.util.Set;
 public class AppointmentDto {
 
     private Long id;
-    private CustomerDto customer;
-    private EmployeeDto employee;
+    private Long customerId;
+    private Long employeeId;
     private Set<SkillDto> skills;
     private String description;
     private AvailabilitySlotDto availabilitySlot;
 
-    public AppointmentDto(Long id, CustomerDto customer, EmployeeDto employee, Set<SkillDto> skills, String description, AvailabilitySlotDto availabilitySlot) {
+    public AppointmentDto(Long id, Long customerId, Long employeeId, Set<SkillDto> skills, String description, AvailabilitySlotDto availabilitySlot) {
         this.id = id;
-        this.customer = customer;
-        this.employee = employee;
+        this.customerId = customerId;
+        this.employeeId = employeeId;
         this.skills = skills;
         this.description = description;
         this.availabilitySlot = availabilitySlot;
@@ -31,12 +31,20 @@ public class AppointmentDto {
 
     public void setId(Long id) { this.id = id; }
 
-    public CustomerDto getCustomer() {
-        return customer;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(CustomerDto customer) {
-        this.customer = customer;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public Set<SkillDto> getSkills() {
@@ -45,14 +53,6 @@ public class AppointmentDto {
 
     public void setSkills(Set<SkillDto> skills) {
         this.skills = skills;
-    }
-
-    public EmployeeDto getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(EmployeeDto employee) {
-        this.employee = employee;
     }
 
     public String getDescription() {

@@ -10,13 +10,13 @@ public class AppointmentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private CustomerEntity customer;
 
-    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Long customerId;
+
+
     @JoinColumn(name = "employee_id")
-    private EmployeeEntity employee;
+    private Long employeeId;
 
 
     @ManyToMany
@@ -31,10 +31,10 @@ public class AppointmentEntity {
     @JoinColumn(name = "availability_slot_id")
     private AvailabilitySlotEntity availabilitySlot;
 
-public AppointmentEntity(Long id, CustomerEntity customer, EmployeeEntity employee, Set<SkillEntity> skills, String description, AvailabilitySlotEntity availabilitySlot) {
+public AppointmentEntity(Long id, Long customerId, Long employeeId, Set<SkillEntity> skills, String description, AvailabilitySlotEntity availabilitySlot) {
         this.id = id;
-        this.customer = customer;
-        this.employee = employee;
+        this.customerId = customerId;
+        this.employeeId = employeeId;
         this.skills = skills;
         this.description = description;
         this.availabilitySlot = availabilitySlot;
@@ -48,14 +48,6 @@ public AppointmentEntity(Long id, CustomerEntity customer, EmployeeEntity employ
     }
     public void setId(Long id) { this.id = id; }
 
-    public CustomerEntity getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(CustomerEntity customer) {
-        this.customer = customer;
-    }
-
     public Set<SkillEntity> getSkills() {
         return skills;
     }
@@ -64,12 +56,20 @@ public AppointmentEntity(Long id, CustomerEntity customer, EmployeeEntity employ
         this.skills = skills;
     }
 
-    public EmployeeEntity getEmployee() {
-        return employee;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setEmployee(EmployeeEntity employee) {
-        this.employee = employee;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getDescription() {
