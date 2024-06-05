@@ -7,7 +7,7 @@ public class AvailabilitySlotDto {
 
     private Long id;
 
-    private EmployeeDto employee;
+    private Long employeeId;
 
     private DayOfWeek dayOfWeek;
 
@@ -17,9 +17,9 @@ public class AvailabilitySlotDto {
     
     
 
-    public AvailabilitySlotDto(Long id, EmployeeDto employee, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
+    public AvailabilitySlotDto(Long id, Long employeeId, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.id = id;
-        this.employee = employee;
+        this.employeeId = employeeId;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -36,12 +36,12 @@ public class AvailabilitySlotDto {
         this.id = id;
     }
 
-    public EmployeeDto getEmployee() {
-        return employee;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee(EmployeeDto employee) {
-        this.employee = employee;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public DayOfWeek getDayOfWeek() {

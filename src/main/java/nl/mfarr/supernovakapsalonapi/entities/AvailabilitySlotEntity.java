@@ -12,9 +12,9 @@ public class AvailabilitySlotEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+
     @JoinColumn(name = "employee_id")
-    private EmployeeEntity employee;
+    private Long employeeId;
 
     private DayOfWeek dayOfWeek;
 
@@ -23,9 +23,9 @@ public class AvailabilitySlotEntity {
     private LocalTime endTime;
 
 
-    public AvailabilitySlotEntity(Long id, EmployeeEntity employee, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
+    public AvailabilitySlotEntity(Long id, Long employeeId, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.id = id;
-        this.employee = employee;
+        this.employeeId = employeeId;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -40,12 +40,12 @@ public class AvailabilitySlotEntity {
 
     public void setId(Long id) { this.id = id; }
 
-    public EmployeeEntity getEmployee() {
-        return employee;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee(EmployeeEntity employee) {
-        this.employee = employee;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public DayOfWeek getDayOfWeek() {

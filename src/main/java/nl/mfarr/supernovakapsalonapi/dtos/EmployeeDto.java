@@ -1,10 +1,5 @@
 package nl.mfarr.supernovakapsalonapi.dtos;
 
-
-import nl.mfarr.supernovakapsalonapi.entities.AppointmentEntity;
-import nl.mfarr.supernovakapsalonapi.entities.AvailabilitySlotEntity;
-
-import java.util.Collection;
 import java.util.Set;
 
 
