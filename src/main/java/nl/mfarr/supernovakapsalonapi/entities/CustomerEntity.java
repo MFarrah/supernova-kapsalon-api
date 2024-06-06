@@ -16,8 +16,11 @@ public class CustomerEntity {
     private String email;
     private String phoneNumber;
     private Gender gender;
-    @OneToMany(mappedBy = "customer")
-    private Set<AppointmentEntity> appointments;
+    @ManyToMany
+    @JoinTable(name = "customer_appointment",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "appointment_id"))
+    private Set <AppointmentEntity> appointments;
 
     public CustomerEntity(Long id, String name, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, Gender gender, Set<AppointmentEntity> appointments) {
         this.id = id;

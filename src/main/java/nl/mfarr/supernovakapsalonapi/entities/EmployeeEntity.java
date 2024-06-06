@@ -25,10 +25,12 @@ public class EmployeeEntity {
     @JoinTable(name = "employee_skill", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
     private Set<SkillEntity> skills;
 
-    @OneToMany(mappedBy = "employee")
+    @ManyToMany
+    @JoinTable(name = "employee_appointment", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "appointment_id"))
     private Set<AppointmentEntity> appointments;
 
-    @OneToMany(mappedBy = "employee")
+    @ManyToMany
+    @JoinTable(name = "employee_availability_slot", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "availability_slot_id"))
     private Set<AvailabilitySlotEntity> availabilitySlots;
 
     public EmployeeEntity(Long id, String name, String lastName, String email, String phoneNumber, Set<SkillEntity> skills, Set<AppointmentEntity> appointments, Set<AvailabilitySlotEntity> availabilitySlots) {
